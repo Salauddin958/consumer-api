@@ -14,9 +14,10 @@ public final class KafkaController {
 	@Autowired
 	WeatherService service;
 	
-    @KafkaListener(groupId = "group_id-1", topics = "kafkaTopic",
+    @KafkaListener(groupId = "group_id", topics = "kafkaTopic",
     		containerFactory = "kafkaListenerContainerFactory")
     public void getWeatherData(String data) throws Exception{
+    	System.out.println("inside kafka consumer");
     	service.saveWeatherData(data);
     }
 }
